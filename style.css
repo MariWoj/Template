@@ -1,0 +1,247 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Animowana ikonka burgerowa */
+.burger {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    width: 60px;
+    height: 45px;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.burger.active {
+    transform: rotate(-90deg);
+}
+
+.burger span {
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    background-color: black;
+    left: 0;
+    transition: top .2s .2s, bottom .2s .2s, opacity .2s .2s, transform .2s .4s;
+
+}
+
+.burger span:nth-child(1) {
+    top: 0
+}
+
+.burger.active span:nth-child(1) {
+    top: calc(50% - 5px);
+    transform: rotate(45deg);
+}
+
+.burger span:nth-child(2) {
+    top: calc(50% - 5px);
+}
+
+.burger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger span:nth-child(3) {
+    bottom: 0;
+}
+
+.burger.active span:nth-child(3) {
+    bottom: calc(50% - 5px);
+    transform: rotate(-45deg);
+}
+
+/* Wysuwane menu boczne */
+aside {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -300px;
+    width: 300px;
+    background-color: #000;
+    transition: .3s linear;
+}
+
+aside.active {
+    left: 0;
+    background-color: #000;
+}
+
+aside nav {
+    height: 100%;
+    width: 100%;
+}
+
+aside nav ul {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+aside nav ul li {
+    flex-basis: 20%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+aside nav ul li a {
+    display: block;
+    text-decoration: none;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+aside nav ul li:hover {
+    background-color: red;
+    cursor: pointer;
+}
+
+/* Animowany dzwonek */
+.bell {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 6px solid cadetblue;
+    font-size: 50px;
+    color: cadetblue;
+    text-align: center;
+    line-height: 80px;
+    cursor: pointer;
+}
+
+.bell i {
+    animation: rotate .3s linear infinite alternate;
+    transform-origin: 50% 0;
+}
+
+.bell:hover {
+    background-color: cadetblue;
+}
+
+.bell:hover i {
+    color: white;
+    animation-duration: .15s;
+}
+
+div.bell.active {
+    background-color: cadetblue;
+}
+
+div.bell.active:hover {
+    cursor: default;
+}
+
+i.fa-bell.active {
+    color: white;
+    animation-play-state: paused;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(30deg);
+    }
+
+    100% {
+        transform: rotate(-30deg);
+    }
+}
+
+/* Popup */
+.body.blur {
+    filter: blur(2px);
+}
+
+.modal-wrap {
+    display: none;
+}
+
+.modal-wrap.active {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.modal-wrap.active .modal {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 70%;
+    border: 2px solid black;
+}
+
+@media(max-width: 800px) {
+    .modal-wrap.active .modal {
+        width: 90%;
+        height: 80%;
+    }
+}
+
+.modal .top {
+    flex-basis: 15%;
+    background-color: #aaa;
+}
+
+.modal .middle {
+    flex-grow: 1;
+    background-color: #fff;
+}
+
+.modal .bottom {
+    flex-basis: 15%;
+    background-color: #aaa;
+}
+
+span.hide {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    font-family: arial;
+    font-size: 30px;
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+span.hide:hover {
+    box-shadow: 0 0 0 6px cadetblue, 0 0 0 9px black;
+}
+
+.modal .top h1 {
+    text-align: center;
+    margin-top: 35px;
+}
+
+.modal .middle p {
+    text-align: center;
+    margin-top: 35px;
+    font-size: 20px;
+}
+
+.modal .bottom p {
+    text-align: center;
+    margin-top: 35px;
+    font-size: 20px;
+}
